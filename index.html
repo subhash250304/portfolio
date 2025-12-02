@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Sunkenapally Subhash — Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#021018; --panel:#07212a; --card:#081825; --muted:#9fb3c7;
+    --accent:#39a2ff; --glass: rgba(255,255,255,0.03); --radius:12px;
+    --text:#e6f4fb;
+  }
+  [data-theme="light"]{
+    --bg:#f6f8fb; --panel:#ffffff; --card:#ffffff; --muted:#45515b;
+    --accent:#1750d8; --glass: rgba(20,24,34,0.03); --text:#081022;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    background: linear-gradient(180deg,var(--bg), #021018 160%);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    padding:20px;
+    line-height:1.45;
+  }
+
+  .container{max-width:1100px;margin:0 auto}
+  header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:48px;height:48px;border-radius:10px;display:grid;place-items:center;
+        background:linear-gradient(135deg,var(--accent), #6fbfff);color:#022; font-weight:800}
+  .brand h1{margin:0;font-size:16px}
+  .brand p{margin:0;color:var(--muted);font-size:13px}
+
+  nav{display:flex;gap:10px;align-items:center}
+  nav a{color:var(--muted);text-decoration:none;padding:6px 8px;border-radius:8px;font-weight:600;font-size:14px}
+  nav a:hover{color:var(--accent);background:rgba(255,255,255,0.02)}
+
+  /* layout */
+  .layout{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start}
+  @media(max-width:980px){.layout{grid-template-columns:1fr}}
+
+  /* main content */
+  .main-panel{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+             padding:18px;border-radius:var(--radius);box-shadow:0 8px 26px rgba(2,6,23,0.6)}
+  .intro h2{margin:0;font-size:20px}
+  .intro p{color:var(--muted);margin-top:8px}
+  .badges{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+  .badge{background:rgba(255,255,255,0.02);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+
+  .action-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:10px;font-weight:700;background:linear-gradient(90deg,var(--accent), #8fd1ff);color:#012a32;text-decoration:none}
+  .ghost{background:transparent;border:1px solid rgba(255,255,255,0.03);padding:8px 10px;border-radius:10px;color:var(--muted);text-decoration:none;font-weight:700}
+
+  .projects{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+  @media(max-width:700px){.projects{grid-template-columns:1fr}}
+
+  .card{background:var(--card);padding:12px;border-radius:10px;box-shadow:0 6px 18px rgba(2,6,23,0.5);transition:transform .12s;cursor:default}
+  .card:hover{transform:translateY(-4px)}
+  .card h3{margin:0;font-size:15px}
+  .card p{margin:8px 0 0;color:var(--muted);font-size:13px}
+
+  /* expanded project details */
+  .project-expanded{margin-top:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));padding:14px;border-radius:8px;border:1px solid rgba(255,255,255,0.02);display:none}
+  .project-expanded h4{margin:0 0 6px 0}
+  .project-meta{color:var(--muted);font-size:13px}
+  pre{background:rgba(0,0,0,0.22);padding:12px;border-radius:8px;overflow:auto;color:var(--muted)}
+
+  /* sidebar - make compact and scrollable */
+  aside{position:relative}
+  .sidebar{background:var(--panel);padding:14px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.6);display:flex;flex-direction:column;gap:12px;height:calc(100vh - 120px);max-height:760px;overflow:auto}
+  .sidebar h4{margin:0 0 6px 0;font-size:14px}
+  .compact{color:var(--muted);font-size:14px}
+  .compact ul{margin:8px 0 0 14px;padding:0;color:var(--muted)}
+  .compact li{margin-bottom:6px}
+
+  /* collapse toggle */
+  .collapsible{border-radius:8px;padding:8px;background:rgba(255,255,255,0.01);display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+  .small-note{font-size:13px;color:var(--muted)}
+
+  footer{margin-top:16px;color:var(--muted);text-align:center;font-size:13px}
+
+  /* accessibility for scrollbar */
+  .sidebar::-webkit-scrollbar{width:10px}
+  .sidebar::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.03);border-radius:8px}
+
+  @media(max-width:520px){
+    body{padding:14px}
+    .logo{width:42px;height:42px}
+    nav{display:none}
+    .sidebar{height:auto;max-height:none;overflow:visible}
+  }
+</style>
+</head>
+<body data-theme="dark">
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">SS</div>
+        <div>
+          <h1>Sunkenapally Subhash</h1>
+          <p>M.Sc. AI & Data Science (pursuing)</p>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <button id="themeToggle" title="Toggle theme" style="background:none;border:0;color:var(--muted);font-weight:700;cursor:pointer">Theme</button>
+      </nav>
+    </header>
+
+    <div class="layout">
+      <!-- MAIN -->
+      <main class="main-panel">
+        <section id="about" class="intro" aria-labelledby="about-title">
+          <h2 id="about-title">Hi — I'm Subhash. I build data-driven ML solutions.</h2>
+          <p>I am a motivated postgraduate student pursuing an M.Sc. in Artificial Intelligence & Data Science. I build research-oriented and practical ML systems with hands-on experience in Python, data preprocessing, feature engineering, and end-to-end model development.</p>
+
+          <div class="badges" aria-hidden="true">
+            <span class="badge">Python</span>
+            <span class="badge">Machine Learning</span>
+            <span class="badge">Data Analysis</span>
+            <span class="badge">Research</span>
+          </div>
+
+          <div class="action-row">
+            <a class="btn" href="resume.pdf" download>Download Resume</a>
+            <a class="ghost" href="#contact">Contact</a>
+          </div>
+        </section>
+
+        <section id="projects" style="margin-top:18px">
+          <h3 style="margin:0 0 10px 0;color:var(--muted)">Projects & Research</h3>
+          <div class="projects" aria-live="polite">
+            <article class="card" data-key="agritech" tabindex="0" role="button" id="agriCard">
+              <h3>AgriTech — Precision Agriculture Platform</h3>
+              <p>Precision agriculture system for crop recommendation, yield prediction and farmer advisory using satellite & weather data. (Python, feature engineering, ML models, dashboard)</p>
+
+              <div class="project-expanded" id="agriExpanded">
+                <h4>AgriTech — Project Details & Code</h4>
+                <div class="project-meta">Full-stack AI — Python backend, JS dashboard, Chart visualizations</div>
+                <p style="margin-top:8px;color:var(--muted);font-size:14px">A production-ready prototype that combines: data ingestion (soil & weather), a lightweight ML model for crop recommendation, and an interactive dashboard for farmers to input NPK/pH and get instant suggestions.</p>
+
+                <p style="color:var(--muted);margin-top:8px">Core components:</p>
+                <ul style="color:var(--muted);margin:8px 0 0 18px">
+                  <li>Data preprocessing for NPK, pH, climate features</li>
+                  <li>Scikit-learn classification model (RandomForest) for crop recommendation</li>
+                  <li>REST API (FastAPI/Flask) serving predictions</li>
+                  <li>Frontend: interactive dashboard with Chart.js and chat assistant</li>
+                </ul>
+
+                <p style="color:var(--muted);margin-top:10px">Example: Frontend — calling prediction API (JS)</p>
+                <pre><code>// POST to /api/predict with soil & climate inputs
+async function recommendCrop(payload){
+  const res = await fetch('/api/predict', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(payload)
+  });
+  if(!res.ok) throw new Error('Prediction failed');
+  return res.json();
+}
+
+// usage:
+recommendCrop({N:90,P:42,K:43,temperature:21,humidity:82,ph:6.5,rainfall:203})
+  .then(data => console.log('Recommended crop:', data.recommended_crop))
+  .catch(err => console.error(err));
+</code></pre>
+
+                <p style="color:var(--muted);margin-top:10px">Example: Backend — training simple RandomForest (Python)</p>
+                <pre><code>from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+import pandas as pd
+
+# load data
+# df has columns: N,P,K,temperature,humidity,ph,rainfall,target_crop
+X = df[['N','P','K','temperature','humidity','ph','rainfall']]
+y = df['target_crop']
+
+X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.2,random_state=42)
+clf = RandomForestClassifier(n_estimators=100, random_state=42)
+clf.fit(X_train, y_train)
+print('Accuracy:', clf.score(X_test, y_test))
+</code></pre>
+
+                <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+                  <a class="btn" href="agritech.html">Open Dashboard</a>
+
+                  <button class="ghost" id="collapseAgri">Collapse</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="card" data-key="overthinking" tabindex="0" role="button" id="overthinkingCard">
+              <h3>Modeling Human Overthinking (Decision Delay Data)</h3>
+              <p>Research framework to quantify overthinking via decision latency time-series. Feature extraction, temporal analysis and ML models to detect overthinking patterns.</p>
+
+              <!-- Expanded details (hidden by default) -->
+              <div class="project-expanded" id="overthinkingExpanded">
+                <h4>Research: Modeling Human Overthinking Through Decision Delay Data</h4>
+                <div class="project-meta">Sunkenapally Subhash — M.Sc. (AI & DS)</div>
+                <p style="margin-top:8px;color:var(--muted);font-size:14px">A behavioral data-science research project that introduces a computational framework to measure human overthinking using <strong>Decision Delay Data (DDD)</strong>. The study proposes two new metrics:</p>
+                <ul style="color:var(--muted);margin:8px 0 0 18px">
+                  <li><strong>Overthinking Ratio (OR):</strong> Measures cognitive inefficiency by relating decision accuracy to decision time.</li>
+                  <li><strong>Overthinking Threshold (OT):</strong> Identifies the point where additional deliberation reduces decision accuracy.</li>
+                </ul>
+
+                <p style="color:var(--muted);margin-top:10px">Key results and methods: temporal feature engineering, correlation analysis (r = -0.63), polynomial regression showing an inverted‑U relationship, and K‑means clustering that classifies users into impulsive, balanced, and overthinkers. Average OT ≈ <strong>1.45 × EDT</strong>.</p>
+
+                <p style="color:var(--muted);margin-top:8px">Skills: Python · Temporal Analytics · Regression · Clustering · Cognitive Modeling · Research Writing</p>
+
+                <p style="color:var(--muted);margin-top:10px">Example: computing Overthinking Ratio (Python)</p>
+                <pre><code>def compute_or(accuracy, adt, eps=1e-6):
+    # OR = (1 - accuracy_normalized) / (adt + eps)
+    # accuracy assumed 0..1
+    return (1 - accuracy) / (adt + eps)
+
+# usage
+or_val = compute_or(0.75, 42)
+print('OR:', or_val)
+</code></pre>
+
+                <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+                  <a class="btn" href="Modeling Human Overthinking Through Decision Delay Data paper.docx" download>Download Paper</a>
+                  <button class="ghost" id="collapseOverthinking">Collapse</button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div style="margin-top:14px" class="card">
+            <strong style="display:block;margin-bottom:8px">Project notes</strong>
+            <ul style="color:var(--muted);margin:0 0 0 18px;padding:0">
+              <li>Each project includes a README with setup, dataset sources, and model details.</li>
+              <li>Reproducibility: include `requirements.txt`, seed, and demo notebooks.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="education" style="margin-top:18px">
+          <h3 style="margin:0 0 10px 0;color:var(--muted)">Education</h3>
+          <div class="card">
+            <strong>M.Sc. in Artificial Intelligence and Data Science</strong><br>
+            University of Andhra Pradesh, Anantapur — <em>Expected Graduation: July 2026</em>
+            <div class="small-note" style="margin-top:6px">Attended Workshops: Theoretical Research Transformation; Design Thinking for Innovation; Accelerate Your AI Journey with Python</div>
+          </div>
+
+          <div class="card">
+            <strong>B.Sc. in MSCs (Maths, Statistics, Computer Science)</strong><br>
+            University of Arts & Science, Hanmakonda (Warangal) — <em>Graduation: May 2024 | CGPA: 8.6</em>
+          </div>
+
+          <div class="card">
+            <strong>Intermediate — MPC</strong><br>
+            Sri Venkateshwara Junior College, Karimnagar — <em>2019–2021 | Marks: 956</em>
+            <div style="height:8px"></div>
+            <strong>SSC</strong><br>
+            Vishwa Bharathi High School — <em>2018–2019 | CGPA: 9.7</em>
+          </div>
+        </section>
+
+        <section id="certs" style="margin-top:18px">
+          <h3 style="margin:0 0 10px 0;color:var(--muted)">Certifications & Workshops</h3>
+          <div class="card">
+            <strong>Design Thinking for Innovation</strong><br>
+            Central University of Andhra Pradesh — April 2025<br>
+            <small style="color:var(--muted)">Two-day workshop focused on real-world innovation using design thinking principles.</small>
+          </div>
+
+          <div class="card">
+            <strong>Digital Transformation & Economic Evolution of India</strong><br>
+            National Seminar (ICSSR-SRC & CUAP) — November 2024<br>
+            <small style="color:var(--muted)">Presented a research paper on the impact of digital transformation on India's economy.</small>
+          </div>
+
+          <div class="card">
+            <strong>Freebies vs Welfare in Telangana Elections — 2023</strong><br>
+            National Political Science Seminar — April 2025<br>
+            <small style="color:var(--muted)">Analyzed policy impact through an academic paper.</small>
+          </div>
+
+          <div class="card">
+            <strong>Accelerate Your AI Journey: Machine Learning with Python</strong><br>
+            Central University of Andhra Pradesh — March 2025<br>
+            <small style="color:var(--muted)">Hands-on workshop covering foundational ML techniques using Python.</small>
+          </div>
+        </section>
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="sidebar" role="complementary" aria-label="Sidebar">
+          <div>
+            <h4>Quick Contact</h4>
+            <div class="compact">
+              <div>📞 9492105326</div>
+              <div>✉ subhash250304@gmail.com</div>
+              <div>📍 Anantapur, Andhra Pradesh</div>
+            </div>
+          </div>
+
+          <div>
+            <div class="collapsible" role="button" aria-expanded="true" data-target="skillsBlock">
+              <strong>Skills & Tools</strong>
+              <span class="small-note">click</span>
+            </div>
+            <div id="skillsBlock" class="compact" style="margin-top:8px">
+              <ul>
+                <li>Python</li>
+                <li>Pandas, NumPy</li>
+                <li>Scikit-Learn</li>
+                <li>TensorFlow / Keras</li>
+                <li>SQL</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="collapsible" role="button" aria-expanded="false" data-target="achieveBlock">
+              <strong>Achievements</strong>
+              <span class="small-note">click</span>
+            </div>
+            <div id="achieveBlock" class="compact" style="margin-top:8px;display:none">
+              <ul>
+                <li>Survey — Srisailam Wildlife Sanctuary (2023)</li>
+                <li>NSS Volunteer — Community Programs (2023)</li>
+                <li>Second Prize — District Science INSPIRE (2019)</li>
+                <li>Kuchipudi Performer — Telangana Formation Day (2014)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="collapsible" role="button" aria-expanded="false" data-target="linksBlock">
+              <strong>Links</strong>
+              <span class="small-note">click</span>
+            </div>
+            <div id="linksBlock" class="compact" style="margin-top:8px;display:none">
+              <ul>
+                <li>LinkedIn: linkedin.com/in/subhash-s-27b006347</li>
+                <li>GitHub: https://github.com/subhash250304</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="margin-top:8px">
+            <a class="btn" href="mailto:subhash250304@gmail.com">Email Me</a>
+            <a class="ghost" href="resume.pdf" download style="margin-left:8px">Download Resume</a>
+          </div>
+
+          <div style="height:6px"></div>
+          <div style="color:var(--muted);font-size:13px;text-align:center;margin-top:auto">© <span id="year"></span> Subhash</div>
+        </div>
+      </aside>
+    </div>
+
+    <footer style="margin-top:10px;text-align:center;color:var(--muted)">
+      Built with care • Available for internships & research collaborations
+    </footer>
+  </div>
+
+<script>
+  // set year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // theme toggle
+  const body = document.body;
+  const themeToggle = document.getElementById('themeToggle');
+  const saved = localStorage.getItem('pref-theme');
+  if(saved) body.setAttribute('data-theme', saved);
+  themeToggle.addEventListener('click', () => {
+    const next = body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    body.setAttribute('data-theme', next);
+    localStorage.setItem('pref-theme', next);
+  });
+
+  // collapsible sidebar blocks
+  document.querySelectorAll('.collapsible').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      const target = document.getElementById(el.dataset.target);
+      const expanded = el.getAttribute('aria-expanded') === 'true';
+      if(!target) return;
+      if(expanded){
+        target.style.display = 'none';
+        el.setAttribute('aria-expanded','false');
+      } else {
+        target.style.display = 'block';
+        el.setAttribute('aria-expanded','true');
+      }
+    });
+  });
+
+  // project expansion logic
+  const agriCard = document.getElementById('agriCard');
+  const agriExpanded = document.getElementById('agriExpanded');
+  const collapseAgri = document.getElementById('collapseAgri');
+  const overCard = document.getElementById('overthinkingCard');
+  const overExpanded = document.getElementById('overthinkingExpanded');
+  const collapseOver = document.getElementById('collapseOverthinking');
+
+  function toggleExpand(card, expanded){
+    const isOpen = expanded.style.display === 'block';
+    // close both first
+    agriExpanded.style.display = 'none';
+    overExpanded.style.display = 'none';
+    expanded.style.display = isOpen ? 'none' : 'block';
+    card.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  agriCard.addEventListener('click', (e)=>{ if(e.target.id === 'collapseAgri') return; toggleExpand(agriCard, agriExpanded); });
+  collapseAgri.addEventListener('click', (ev)=>{ ev.stopPropagation(); agriExpanded.style.display='none'; });
+
+  overCard.addEventListener('click', (e)=>{ if(e.target.id === 'collapseOverthinking') return; toggleExpand(overCard, overExpanded); });
+  collapseOver.addEventListener('click', (ev)=>{ ev.stopPropagation(); overExpanded.style.display='none'; });
+
+  // simple project modal (if you want to expand projects later)
+  const projects = {
+    agritech: {
+      title: 'AgriTech — Precision Agriculture Platform',
+      body: '<p>Precision agriculture system for crop recommendation, yield prediction and farmer advisory. Tech: Python, Pandas, Scikit-Learn, satellite-data preprocessing, dashboard.</p>'
+    },
+    overthinking: {
+      title: 'Modeling Human Overthinking',
+      body: '<p>Research framework that quantifies overthinking using decision delay time-series; feature engineering and ML models.</p>'
+    }
+  };
+
+  document.querySelectorAll('.card[data-key]').forEach(card=>{
+    card.addEventListener('keypress', (e)=>{ if(e.key === 'Enter') card.click(); });
+  });
+</script>
+</body>
+</html>
