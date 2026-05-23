@@ -134,7 +134,7 @@
       <main class="main-panel">
         <section id="about" class="intro" aria-labelledby="about-title">
           <h2 id="about-title">Hi — I'm Subhash. I build data-driven ML solutions.</h2>
-          <p>I am a motivated postgraduate student pursuing an M.Sc. in Artificial Intelligence & Data Science. I build research-oriented and practical ML systems with hands-on experience in Python, data preprocessing, feature engineering, and end-to-end model development.</p>
+          <p>I am a motivated postgraduate graduate with an M.Sc. in Artificial Intelligence & Data Science. I build research-oriented and practical ML systems with hands-on experience in Python, data preprocessing, feature engineering, and end-to-end model development.</p>
 
           <div class="badges" aria-hidden="true">
             <span class="badge">Python</span>
@@ -219,7 +219,7 @@ print('Accuracy:', clf.score(X_test, y_test))
               <h3>Modeling Human Overthinking (Decision Delay Data)</h3>
               <p>Research framework to quantify overthinking via decision latency time-series. Feature extraction, temporal analysis and ML models to detect overthinking patterns.</p>
 
-  <button class="ghost check-btn" onclick="toggleExpand(agriCard, agriExpanded)">
+  <button class="ghost check-btn" onclick="toggleExpand(overthinkingCard, overthinkingExpanded)">
     Check here
   </button>
 
@@ -256,6 +256,67 @@ print('OR:', or_val)
                 </div>
               </div>
             </article>
+
+            <article class="card" data-key="trustworthyai" id="trustCard">
+              <h3>Trustworthy AI Framework for Decision Support</h3>
+
+              <p>Research-oriented AI project integrating Explainable AI, Continual Learning, and Uncertainty Estimation for reliable decision-support systems.</p>
+
+              <button class="ghost check-btn" onclick="toggleExpand(trustCard, trustExpanded)">
+                Check here
+              </button>
+
+              <div class="project-expanded" id="trustExpanded">
+
+                <h4>Project Report — Trustworthy AI Framework</h4>
+
+                <div class="project-meta">
+                  AI Research • Explainable AI • Continual Learning • Uncertainty Estimation
+                </div>
+
+                <p style="margin-top:8px;color:var(--muted);font-size:14px">
+                  This project presents a unified trustworthy AI framework designed for intelligent decision-support systems.
+                  The framework combines transparency, adaptability, and reliability into a single AI architecture.
+                </p>
+
+                <ul style="color:var(--muted);margin:8px 0 0 18px">
+                  <li>Explainable AI using SHAP & LIME</li>
+                  <li>Continual Learning strategies</li>
+                  <li>Monte Carlo Dropout uncertainty estimation</li>
+                  <li>Risk-aware AI prediction systems</li>
+                  <li>Human-centered AI design principles</li>
+                </ul>
+
+                <p style="color:var(--muted);margin-top:10px">
+                  The project focuses on improving trust, interpretability, fairness, and robustness in AI-based automated decision systems.
+                </p>
+
+                <p style="color:var(--muted);margin-top:10px">
+                  Technologies: Python, TensorFlow, Scikit-Learn, SHAP, LIME, Monte Carlo Methods
+                </p>
+
+                <pre><code># Example: Monte Carlo Dropout
+
+predictions = []
+
+for _ in range(100):
+    pred = model(x, training=True)
+    predictions.append(pred)
+
+mean_prediction = np.mean(predictions)
+uncertainty = np.var(predictions)
+</code></pre>
+
+                <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+
+                  <a class="btn" href="subbu diss.pdf" target="_blank">
+                    View Project Report
+                  </a>
+
+                  <button class="ghost" id="collapseTrust">Collapse</button>
+                </div>
+              </div>
+            </article>
           </div>
 
           <div style="margin-top:14px" class="card">
@@ -266,12 +327,46 @@ print('OR:', or_val)
             </ul>
           </div>
         </section>
+        <section id="publications" style="margin-top:18px">
+  <h3 style="margin:0 0 10px 0;color:var(--muted)">Publications</h3>
+
+  <div class="card">
+    <strong>
+      A Trustworthy Artificial Intelligence Framework for Decision Support Using Continual Learning, Explainability, and Uncertainty Estimation
+    </strong>
+
+    <p style="margin-top:8px;color:var(--muted);font-size:14px">
+      Published in International Journal of Innovative Research in Technology (IJIRT),
+      Volume 12, Issue 12, May 2026.
+    </p>
+
+    <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+      <a class="btn"
+         href="https://ijirt.org/article?manuscript=201178"
+         target="_blank">
+         View Publication
+      </a>
+
+      <a class="ghost"
+         href="ijirt-certificate.jpg"
+         target="_blank">
+         View Certificate
+      </a>
+    </div>
+
+    <div style="margin-top:14px">
+      <img src="ijirt-certificate.jpg"
+           alt="IJIRT Publication Certificate"
+           style="width:100%;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.4)">
+    </div>
+  </div>
+</section>
 
         <section id="education" style="margin-top:18px">
           <h3 style="margin:0 0 10px 0;color:var(--muted)">Education</h3>
           <div class="card">
             <strong>M.Sc. in Artificial Intelligence and Data Science</strong><br>
-            University of Andhra Pradesh, Anantapur — <em>Expected Graduation: July 2026</em>
+            University of Andhra Pradesh, Anantapur — <em>Graduated July 2026</em>
             <div class="small-note" style="margin-top:6px">Attended Workshops: Theoretical Research Transformation; Design Thinking for Innovation; Accelerate Your AI Journey with Python</div>
           </div>
 
@@ -313,6 +408,36 @@ print('OR:', or_val)
             <strong>Accelerate Your AI Journey: Machine Learning with Python</strong><br>
             Central University of Andhra Pradesh — March 2025<br>
             <small style="color:var(--muted)">Hands-on workshop covering foundational ML techniques using Python.</small>
+          </div>
+
+          <div class="card">
+            <strong>
+              Communication, Research and Career Readiness
+            </strong><br>
+
+            Jawaharlal Nehru Technological University Anantapur (JNTUA) —
+            March 2026<br>
+
+            <small style="color:var(--muted)">
+              Participated in a Two-Day Training Workshop organized under
+              the ANRF-PAIR Program in collaboration with ACS Chemistry for Life
+              and IIT Hyderabad.
+            </small>
+
+            <div style="margin-top:12px">
+
+              <img src="anrf pair prg cert.jpeg"
+                   alt="Communication Research and Career Readiness Certificate"
+                   style="
+                      width:100%;
+                      max-width:500px;
+                      border-radius:10px;
+                      border:1px solid rgba(255,255,255,0.05);
+                      box-shadow:0 4px 14px rgba(0,0,0,0.25);
+                   ">
+
+            </div>
+
           </div>
         </section>
       </main>
@@ -502,12 +627,16 @@ print('OR:', or_val)
   const overCard = document.getElementById('overthinkingCard');
   const overExpanded = document.getElementById('overthinkingExpanded');
   const collapseOver = document.getElementById('collapseOverthinking');
+  const trustCard = document.getElementById('trustCard');
+  const trustExpanded = document.getElementById('trustExpanded');
+  const collapseTrust = document.getElementById('collapseTrust');
 
   function toggleExpand(card, expanded){
     const isOpen = expanded.style.display === 'block';
-    // close both first
+    // close all other expanded panels first
     agriExpanded.style.display = 'none';
     overExpanded.style.display = 'none';
+    trustExpanded.style.display = 'none';
     expanded.style.display = isOpen ? 'none' : 'block';
     card.scrollIntoView({behavior:'smooth', block:'center'});
   }
@@ -517,6 +646,9 @@ print('OR:', or_val)
 
   overCard.addEventListener('click', (e)=>{ if(e.target.id === 'collapseOverthinking') return; toggleExpand(overCard, overExpanded); });
   collapseOver.addEventListener('click', (ev)=>{ ev.stopPropagation(); overExpanded.style.display='none'; });
+
+  trustCard.addEventListener('click', (e)=>{ if(e.target.id === 'collapseTrust') return; toggleExpand(trustCard, trustExpanded); });
+  collapseTrust.addEventListener('click', (ev)=>{ ev.stopPropagation(); trustExpanded.style.display='none'; });
 
   // simple project modal (if you want to expand projects later)
   const projects = {
